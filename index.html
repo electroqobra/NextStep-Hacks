@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Map of Luxembourg</title>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+
+<body>
+   <div id="map" style="height: 100vh;"></div>
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+   <script>
+      // Creating map options
+      var mapOptions = {
+         center: [49.6111, 6.1297],
+         zoom: 15
+      }
+
+      // Creating a map object
+      var map = new L.map('map', mapOptions);
+
+      // Creating a Layer object
+      var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+      var busIcon = L.icon({
+         iconUrl: 'bus.png',
+         iconSize: [30, 30], // size of the icon
+      });
+
+      // Adding layer to the map
+      map.addLayer(layer);
+      var busMarker = L.marker([49.61257, 6.12585], {icon: busIcon}).addTo(map);
+      busMarker.bindPopup("<b>Bus #69 Arriving at s station in m minutes.</b>").openPopup();
+   </script>
+</body>
+
+</html>
